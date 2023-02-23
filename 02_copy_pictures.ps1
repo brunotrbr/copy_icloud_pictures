@@ -1,4 +1,10 @@
-﻿$icloud_path = Read-Host "Type iCloud path (origin) without last slash (\)"
+﻿<#
+Author: Bruno Trindade Bragança
+Github: https://github.com/brunotrbr
+Date: 23/02/2023
+#>
+
+$icloud_path = Read-Host "Type iCloud path (origin) without last slash (\)"
 $icloud_path = $icloud_path + "\"
 
 $year = (Get-Date).Year

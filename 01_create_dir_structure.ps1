@@ -1,4 +1,10 @@
-﻿Write-Host
+﻿<#
+Author: Bruno Trindade Bragança
+Github: https://github.com/brunotrbr
+Date: 23/02/2023
+#>
+
+Write-Host
 Write-Host "Creating directory structure"
 Write-Host
 
