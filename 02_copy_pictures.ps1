@@ -57,8 +57,27 @@ foreach ($file in $files)
     $full_path_file = $destination + "\" + $file.Name
 
     if ( -not (Test-Path -Path $full_path_file -PathType Leaf)) {
-        Copy-Item -Path $source -Destination $destination -Verbose *>> $log_file
-        Write-Host "" *>> $log_file
+        try{
+            Copy-Item -Path $source -Destination $destination -Verbose *>> $log_file
+            Write-Host "" *>> $log_file
+        }
+        catch [System.IO.IOException] {
+            Write-Host $_ 
+            Write-Host ""
+            Write-Host "Retry"
+
+            try {
+                Copy-Item -Path $source -Destination $destination -Verbose *>> $log_file
+                Write-Host "" *>> $log_file
+            }
+            catch {
+                Write-Host
+                Write-Host $_ *>> $log_file
+                Write-Host "End" *>> $log_file
+                Write-Host "End"
+                Exit
+            }
+        }
     }
 }
 
