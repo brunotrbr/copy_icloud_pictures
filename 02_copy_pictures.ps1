@@ -7,8 +7,6 @@ Date: 08/03/2023
 $icloud_path = Read-Host "Type iCloud path (origin) without last slash (\)"
 $icloud_path = $icloud_path + "\"
 
-$year = (Get-Date).Year
-
 $destiny_path = Read-Host "Type destiny path without last slash (\)"
 $destiny_path = $destiny_path + "\"
 
@@ -33,11 +31,10 @@ $files = Get-ChildItem -Path $icloud_path 2>> $log_file
 
 foreach ($file in $files)
 {    
-    $creation_date = (Get-ChildItem -File $file.FullName).CreationTime 2>> $log_file
+    $creation_date = (Get-ChildItem -File $file.FullName).LastWriteTime 2>> $log_file
 
     $file_month = $creation_date.Month
     $file_year = $creation_date.Year
-    $file_year = 2022
 
     if ($file_month -lt 10)
     {

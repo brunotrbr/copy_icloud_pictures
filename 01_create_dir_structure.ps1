@@ -8,13 +8,9 @@ Write-Host
 Write-Host "Creating directory structure"
 Write-Host
 
-if (-not ($args[0]) -and -not ($args[1])){
-    Write-Host "Missing args: destiny [0] and year [1]"
-    Exit
-}
+$destinty = Read-Host "Type destiny path without last slash (\)"
 
-$destinty = $args[0]
-$year = $args[1]
+$year = Read-Host "Type the year to create folders"
 
 Write-Host "Creating directory" $year "in" $destinty
 
